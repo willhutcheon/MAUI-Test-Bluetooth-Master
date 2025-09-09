@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_Test_Bluetooth.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+            <Label
+                Text="Wills .NET MAUI Bluetooth"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            <!-- Display for keypad input -->
+            <Entry x:Name="KeypadDisplay" 
+                   Placeholder="Tap numbers..." 
+                   IsReadOnly="True"
+                   FontSize="20"
+                   HorizontalOptions="Fill" />
+            <!-- Fake keypad -->
+            <Grid RowSpacing="10" ColumnSpacing="10"
+                  Padding="20"
+                  HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <!-- Digits -->
+                <Button Text="1" Grid.Row="0" Grid.Column="0" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="2" Grid.Row="0" Grid.Column="1" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="3" Grid.Row="0" Grid.Column="2" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="4" Grid.Row="1" Grid.Column="0" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="5" Grid.Row="1" Grid.Column="1" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="6" Grid.Row="1" Grid.Column="2" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="7" Grid.Row="2" Grid.Column="0" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="8" Grid.Row="2" Grid.Column="1" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="9" Grid.Row="2" Grid.Column="2" Clicked="OnKeypadButtonClicked"/>
+                <!-- Special row -->
+                <Button Text="C" Grid.Row="3" Grid.Column="0" Clicked="OnClearKeypadClicked"/>
+                <Button Text="0" Grid.Row="3" Grid.Column="1" Clicked="OnKeypadButtonClicked"/>
+                <Button Text="←" Grid.Row="3" Grid.Column="2" Clicked="OnBackspaceClicked"/>
+            </Grid>
+            <!--<Button Text="Scan" Clicked="OnScanClicked"/>-->
+            <Button x:Name="ScanButton" 
+                    Text="Scan" 
+                    Clicked="OnScanClicked"/>
+            <Button Text="Clear" Clicked="OnClearClicked"/>
+            <CollectionView x:Name="DevicesListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Name}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
